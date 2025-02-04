@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,7 +19,7 @@
         }
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 20px;
             padding: 20px;
             max-width: 1200px;
@@ -31,39 +30,40 @@
             padding: 10px;
             border-radius: 10px;
             transition: transform 0.3s ease;
+            position: relative;
+            height: 400px;
         }
-        .gallery-item:hover {
-            transform: scale(1.05);
-        }
-        .gallery-item img {
+        .viewer {
             width: 100%;
-            border-radius: 8px;
-        }
-        .gallery-item a {
-            text-decoration: none;
-            color: #00aaff;
-            font-weight: bold;
-            display: block;
-            margin-top: 10px;
+            height: 100%;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>My 3D Art Portfolio</h1>
-        <p>Check out my latest 3D models on <a href="https://www.artstation.com/tylaread" target="_blank">ArtStation</a>!</p>
+        <h1>My Interactive 3D Portfolio</h1>
+        <p>Click and rotate my 3D models directly on the page!</p>
     </header>
 
     <div class="gallery">
         <div class="gallery-item">
-            <!--<iframe src="https://sketchfab.com/models/ecb9ce9ff973406398ee56e391f9c902/embed"></iframe>-->
-            <p>A rubber duck is a small, floating toy typically made of rubber or plastic, often associated with bath time. Traditionally designed to resemble a bright yellow duck with an orange beak and friendly eyes, it has become an iconic symbol of childhood and relaxation.
-
-                Beyond its role as a bath toy, rubber ducks hold cultural significance in various ways. They are used in "rubber duck debugging," a problem-solving technique where programmers explain their code to a rubber duck to uncover issues. Additionally, rubber duck races are popular charity events where numbered ducks are released into a river, with prizes awarded to the winners.
-                
-                Whether floating in a bathtub, sitting on a desk, or drifting down a river in a race, the rubber duck remains a beloved and whimsical object.</p>
-                <a href="https://sketchfab.com/3d-models/rubber-duck-ecb9ce9ff973406398ee56e391f9c902?utm_medium=embed&utm_campaign=share-popup&utm_content=ecb9ce9ff973406398ee56e391f9c902" target="_blank">View Fullscreen</a></p>
+            <div id="sketchfab-viewer-1" class="viewer"></div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
     </div>
+
+    <script>
+        function loadSketchfabModel(containerId, modelId) {
+            let iframe = document.createElement("iframe");
+            iframe.src = `https://sketchfab.com/models/${modelId}/embed`;
+            iframe.width = "100%";
+            iframe.height = "100%";
+            iframe.style.border = "none";
+            document.getElementById(containerId).appendChild(iframe);
+        }
+
+        loadSketchfabModel("sketchfab-viewer-1", "ecb9ce9ff973406398ee56e391f9c902");
+
+    </script>
 </body>
 </html>
