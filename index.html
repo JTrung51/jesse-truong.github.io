@@ -5,36 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My 3D Portfolio</title>
     <style>
-        body { text-align: center; font-family: Arial, sans-serif; }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #fff;
+        }
+        header {
+            background: #1e1e1e;
+            padding: 20px;
+            font-size: 24px;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .gallery-item {
+            background: #222;
+            padding: 10px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        .gallery-item img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .gallery-item a {
+            text-decoration: none;
+            color: #00aaff;
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
-    <h1>Welcome to My 3D Portfolio</h1>
-    <p>Check out my work below!</p>
-    <div id="3d-container"></div>
-    <script>
-        // Basic Three.js Setup
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.getElementById("3d-container").appendChild(renderer.domElement);
+    <header>
+        <h1>My 3D Art Portfolio</h1>
+        <p>Check out my latest 3D models on ArtStation!</p>
+    </header>
 
-        const geometry = new THREE.BoxGeometry();
-        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-        const cube = new THREE.Mesh(geometry, material);
-        scene.add(cube);
-
-        camera.position.z = 5;
-
-        function animate() {
-            requestAnimationFrame(animate);
-            cube.rotation.x += 0.01;
-            cube.rotation.y += 0.01;
-            renderer.render(scene, camera);
-        }
-        animate();
-    </script>
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="thumbnail1.jpg" alt="Model 1">
+            <a href="https://www.artstation.com/artwork/0xKV5" target="_blank">View on ArtStation</a>
+        </div>
+    </div>
 </body>
 </html>
